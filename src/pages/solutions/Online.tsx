@@ -1,0 +1,59 @@
+import React from 'react'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
+import HeroSection from '../../components/solutions/online/HeroSection'
+import BenefitsSection from '../../components/solutions/online/BenefitsSection'
+import TestDriveSection from '../../components/solutions/online/TestDriveSection'
+import CustomizableSection from '../../components/solutions/online/CustomizableSection'
+import CompleteExperienceSection from '../../components/solutions/online/CompleteExperienceSection'
+import PricingSection from '../../components/solutions/online/PricingSection'
+
+const Online: React.FC = () => {
+    return (
+        <div className="bg-white min-h-screen">
+            <Navbar />
+
+            <HeroSection />
+
+            {/* Breadcrumbs Section */}
+            <div className="bg-white py-4 md:py-6 px-4 md:px-6 border-b-4 border-orange-500">
+                <div className="w-[90%] mx-auto">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm">
+                        <div className="flex items-center gap-2 text-orange-500">
+                            <svg className="w-3 md:w-4 h-3 md:h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                            </svg>
+                            <span>HOME</span>
+                        </div>
+                        <span className="text-orange-500">/</span>
+                        <span className="text-orange-500">VIRTUAL TEST</span>
+                        <span className="text-orange-500">/</span>
+                        <span className="text-orange-500">SOLUTIONS</span>
+                        <span className="text-orange-500">/</span>
+                        <span className="text-orange-600 font-bold">ONLINE USER EXPERIENCE</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Benefits Section */}
+            <BenefitsSection />
+
+            {/* Test Drive Section */}
+            <TestDriveSection />
+
+            {/* Customizable Section */}
+            <CustomizableSection />
+
+            {/* Complete Experience Section */}
+            <CompleteExperienceSection />
+
+            {/* Pricing Section */}
+            <PricingSection />
+
+            <Footer />
+        </div>
+    )
+}
+
+export default Online
+
