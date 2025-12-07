@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import CartIcon from './CartIcon'
 
 const products = [
     { label: 'Virtual test', icon: '👓', path: '/virtual-test' },
@@ -55,12 +56,75 @@ const solutions = [
     },
 ]
 
+const resources = [
+    {
+        label: 'CASE STUDIES',
+        gradient: 'from-orange-500 to-orange-600',
+        icon: '📣',
+        path: '/case-studies',
+        column: 'left'
+    },
+    {
+        label: 'HQ PACKSHOTS',
+        gradient: 'from-cyan-400 to-teal-500',
+        icon: '📸',
+        path: '/hq-packshots',
+        column: 'left'
+    },
+    {
+        label: 'SUPPORT',
+        gradient: 'from-purple-500 via-pink-500 to-purple-600',
+        icon: '❓',
+        path: '/support',
+        column: 'left'
+    },
+    {
+        label: 'GUIDES AND WEBINARS',
+        gradient: 'from-purple-600 to-purple-700',
+        icon: '✅',
+        path: '/guides-and-webinars',
+        column: 'right'
+    },
+    {
+        label: 'BLOG',
+        gradient: 'from-orange-400 to-orange-500',
+        icon: '📝',
+        path: '/blog',
+        column: 'right'
+    },
+]
+
+const whoWeAre = [
+    {
+        label: 'OUR HISTORY',
+        gradient: 'from-orange-500 to-red-500',
+        icon: '✍️',
+        path: '/our-history'
+    },
+    {
+        label: 'OUR TECHNOLOGY',
+        gradient: 'from-blue-500 to-green-500',
+        icon: '💡',
+        path: '/our-technology'
+    },
+    {
+        label: 'JOIN US',
+        gradient: 'from-purple-500 to-pink-500',
+        icon: '👥',
+        path: '/join-us'
+    },
+]
+
 const Navbar: React.FC = () => {
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [isProductsOpen, setIsProductsOpen] = useState(false)
     const [isSolutionsOpen, setIsSolutionsOpen] = useState(false)
+    const [isResourcesOpen, setIsResourcesOpen] = useState(false)
+    const [isWhoWeAreOpen, setIsWhoWeAreOpen] = useState(false)
     const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(true)
     const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false)
+    const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false)
+    const [isMobileWhoWeAreOpen, setIsMobileWhoWeAreOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
 
     useEffect(() => {
@@ -96,7 +160,7 @@ const Navbar: React.FC = () => {
                         onMouseEnter={() => setIsProductsOpen(true)}
                         onMouseLeave={() => setIsProductsOpen(false)}
                     >
-                        <button className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors">
+                        <button className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
                             Products
                             <span className="text-xs">▾</span>
                         </button>
@@ -130,7 +194,7 @@ const Navbar: React.FC = () => {
                         onMouseEnter={() => setIsSolutionsOpen(true)}
                         onMouseLeave={() => setIsSolutionsOpen(false)}
                     >
-                        <button className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors">
+                        <button className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
                             Solutions
                             <span className="text-xs">▾</span>
                         </button>
@@ -162,19 +226,108 @@ const Navbar: React.FC = () => {
                             </div>
                         )}
                     </div>
-                    <button className="pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors">
-                        Resources
-                    </button>
-                    <button className="pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors">
-                        Who we are
-                    </button>
+                    {/* Resources with dropdown */}
+                    <div
+                        className="relative"
+                        onMouseEnter={() => setIsResourcesOpen(true)}
+                        onMouseLeave={() => setIsResourcesOpen(false)}
+                    >
+                        <button className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
+                            Resources
+                            <span className="text-xs">▾</span>
+                        </button>
+
+                        {isResourcesOpen && (
+                            <div className="absolute left-0 top-full pt-2 w-[520px] rounded-3xl bg-white/95 shadow-2xl px-8 py-6 text-slate-900 backdrop-blur-sm">
+                                <div className="grid grid-cols-2 gap-x-10 gap-y-5">
+                                    {/* Left column */}
+                                    <div className="flex flex-col gap-5">
+                                        {resources.filter(item => item.column === 'left').map((item) => (
+                                            <Link
+                                                key={item.label}
+                                                to={item.path}
+                                                onClick={() => setIsResourcesOpen(false)}
+                                                className="flex items-center gap-3 text-left hover:translate-y-0.5 hover:scale-[1.01] transition-transform cursor-pointer"
+                                            >
+                                                <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-xl text-white shadow-md`}>
+                                                    <span>{item.icon}</span>
+                                                </div>
+                                                <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">
+                                                    {item.label}
+                                                </span>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                    {/* Right column */}
+                                    <div className="flex flex-col gap-5">
+                                        {resources.filter(item => item.column === 'right').map((item) => (
+                                            <Link
+                                                key={item.label}
+                                                to={item.path}
+                                                onClick={() => setIsResourcesOpen(false)}
+                                                className="flex items-center gap-3 text-left hover:translate-y-0.5 hover:scale-[1.01] transition-transform cursor-pointer"
+                                            >
+                                                <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-xl text-white shadow-md`}>
+                                                    <span>{item.icon}</span>
+                                                </div>
+                                                <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">
+                                                    {item.label}
+                                                </span>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    {/* Who We Are with dropdown */}
+                    <div
+                        className="relative"
+                        onMouseEnter={() => setIsWhoWeAreOpen(true)}
+                        onMouseLeave={() => setIsWhoWeAreOpen(false)}
+                    >
+                        <button className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors cursor-pointer">
+                            Who we are
+                            <span className="text-xs">▾</span>
+                        </button>
+
+                        {isWhoWeAreOpen && (
+                            <div className="absolute left-0 top-full pt-2 w-[380px] rounded-2xl bg-white shadow-2xl px-6 py-6 text-slate-900 backdrop-blur-sm">
+                                <div className="grid grid-cols-2 gap-5">
+                                    {whoWeAre.map((item) => (
+                                        <Link
+                                            key={item.label}
+                                            to={item.path}
+                                            onClick={() => setIsWhoWeAreOpen(false)}
+                                            className="flex items-center gap-3 text-left hover:translate-y-0.5 hover:scale-[1.01] transition-transform cursor-pointer"
+                                        >
+                                            <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-xl text-white shadow-md flex-shrink-0`}>
+                                                <span>{item.icon}</span>
+                                            </div>
+                                            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">
+                                                {item.label}
+                                            </span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Shop Link */}
+                    <Link
+                        to="/shop"
+                        className="inline-flex items-center gap-1 pb-1 border-b-2 border-transparent hover:border-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                    >
+                        Shop
+                    </Link>
                 </nav>
 
                 {/* Right side actions */}
                 <div className="flex items-center space-x-3">
                     {/* Mobile menu toggle */}
                     <button
-                        className="relative inline-flex flex-col items-center  justify-center md:hidden h-9 w-9 rounded-full border border-blue-400 bg-white/5 hover:bg-blue-500/20 transition-colors"
+                        className="relative inline-flex flex-col items-center  justify-center md:hidden h-9 w-9 rounded-full border border-blue-400 bg-white/5 hover:bg-blue-500/20 transition-colors cursor-pointer"
                         aria-label="Toggle navigation"
                         onClick={() => setIsMobileOpen((prev) => !prev)}
                     >
@@ -194,12 +347,17 @@ const Navbar: React.FC = () => {
                     </button>
 
                     {/* Desktop CTAs */}
-                    <button className="hidden sm:inline-flex rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors">
+                    <button className="hidden sm:inline-flex rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors cursor-pointer">
                         Try on glasses
                     </button>
-                    <button className="hidden md:inline-flex rounded-full bg-blue-500 text-white px-5 py-2 text-sm font-semibold shadow-lg hover:bg-blue-600 transition-colors">
+                    <button className="hidden md:inline-flex rounded-full bg-blue-500 text-white px-5 py-2 text-sm font-semibold shadow-lg hover:bg-blue-600 transition-colors cursor-pointer">
                         Get a demo
                     </button>
+
+                    {/* Cart Icon */}
+                    <div className="hidden md:block">
+                        <CartIcon />
+                    </div>
                 </div>
             </div>
 
@@ -209,7 +367,7 @@ const Navbar: React.FC = () => {
                     {/* Products section with items */}
                     <div>
                         <button
-                            className="flex w-full items-center justify-between font-semibold"
+                            className="flex w-full items-center justify-between font-semibold cursor-pointer"
                             onClick={() => setIsMobileProductsOpen((prev) => !prev)}
                         >
                             <span>Products</span>
@@ -244,7 +402,7 @@ const Navbar: React.FC = () => {
                     {/* Solutions section with items */}
                     <div>
                         <button
-                            className="flex w-full items-center justify-between font-semibold"
+                            className="flex w-full items-center justify-between font-semibold cursor-pointer"
                             onClick={() => setIsMobileSolutionsOpen((prev) => !prev)}
                         >
                             <span>Solutions</span>
@@ -280,20 +438,97 @@ const Navbar: React.FC = () => {
                             </div>
                         )}
                     </div>
-                    <button className="block w-full text-left font-semibold hover:text-blue-300 transition-colors">
-                        Resources
-                    </button>
-                    <button className="block w-full text-left font-semibold hover:text-blue-300 transition-colors">
-                        Who we are
-                    </button>
+                    {/* Shop Link */}
+                    <Link
+                        to="/shop"
+                        onClick={() => setIsMobileOpen(false)}
+                        className="flex items-center gap-3 rounded-2xl bg-white/5 px-3 py-2 hover:bg-white/10 transition-colors font-semibold cursor-pointer"
+                    >
+                        <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-sm text-white">
+                            <span>🛍️</span>
+                        </div>
+                        <span>Shop</span>
+                    </Link>
+
+                    {/* Resources section with items */}
+                    <div>
+                        <button
+                            className="flex w-full items-center justify-between font-semibold cursor-pointer"
+                            onClick={() => setIsMobileResourcesOpen((prev) => !prev)}
+                        >
+                            <span>Resources</span>
+                            <span
+                                className={`text-xs transition-transform ${isMobileResourcesOpen ? 'rotate-180' : ''
+                                    }`}
+                            >
+                                ▾
+                            </span>
+                        </button>
+                        {isMobileResourcesOpen && (
+                            <div className="mt-3 grid grid-cols-1 gap-3">
+                                {resources.map((item) => (
+                                    <Link
+                                        key={item.label}
+                                        to={item.path}
+                                        onClick={() => setIsMobileOpen(false)}
+                                        className="flex items-center gap-3 text-left rounded-2xl bg-white/5 px-3 py-2 hover:bg-white/10 transition-colors"
+                                    >
+                                        <div className={`h-9 w-9 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-sm text-white flex-shrink-0`}>
+                                            <span>{item.icon}</span>
+                                        </div>
+                                        <span className="text-xs font-semibold uppercase tracking-wide">
+                                            {item.label}
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* Who We Are section with items */}
+                    <div>
+                        <button
+                            className="flex w-full items-center justify-between font-semibold cursor-pointer"
+                            onClick={() => setIsMobileWhoWeAreOpen((prev) => !prev)}
+                        >
+                            <span>Who we are</span>
+                            <span
+                                className={`text-xs transition-transform ${isMobileWhoWeAreOpen ? 'rotate-180' : ''
+                                    }`}
+                            >
+                                ▾
+                            </span>
+                        </button>
+                        {isMobileWhoWeAreOpen && (
+                            <div className="mt-3 grid grid-cols-1 gap-3">
+                                {whoWeAre.map((item) => (
+                                    <Link
+                                        key={item.label}
+                                        to={item.path}
+                                        onClick={() => setIsMobileOpen(false)}
+                                        className="flex items-center gap-3 text-left rounded-2xl bg-white/5 px-3 py-2 hover:bg-white/10 transition-colors"
+                                    >
+                                        <div className={`h-9 w-9 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-sm text-white flex-shrink-0`}>
+                                            <span>{item.icon}</span>
+                                        </div>
+                                        <span className="text-xs font-semibold uppercase tracking-wide">
+                                            {item.label}
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
 
                     <div className="pt-2 space-y-3">
-                        <button className="w-full rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors">
+                        <button className="w-full rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors cursor-pointer">
                             Try on glasses
                         </button>
-                        <button className="w-full rounded-full bg-blue-500 text-white px-5 py-2 text-sm font-semibold shadow-lg hover:bg-blue-600 transition-colors">
+                        <button className="w-full rounded-full bg-blue-500 text-white px-5 py-2 text-sm font-semibold shadow-lg hover:bg-blue-600 transition-colors cursor-pointer">
                             Get a demo
                         </button>
+                        <div className="flex justify-center pt-2">
+                            <CartIcon />
+                        </div>
                     </div>
                 </div>
             )}

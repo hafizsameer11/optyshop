@@ -2,16 +2,16 @@ import React from 'react'
 
 const DigitizationSection: React.FC = () => {
     return (
-        <section className=" py-16 md:py-24">
-            <div className="w-[90%] mx-auto">
+        <section className="bg-white py-16 md:py-24">
+            <div className="w-[90%] mx-auto max-w-7xl">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Left - Image */}
                     <div className="flex justify-center lg:justify-start order-2 lg:order-1">
                         <div className="w-full max-w-xl lg:max-w-2xl">
                             <img
-                                src="/assets/images/3D frame.webp"
-                                alt="3D Digitization - Glasses"
-                                className="w-full h-auto object-contain rounded-2xl shadow-2xl"
+                                src="/assets/images/AA-Glasses_digitization_Closeup.webp"
+                                alt="Digitalization and Production Service - Professional photographer working on 3D digitization"
+                                className="w-full h-auto object-contain rounded-tl-3xl rounded-bl-3xl"
                                 onError={(e) => {
                                     // Fallback if image doesn't load
                                     const target = e.target as HTMLImageElement
@@ -22,26 +22,25 @@ const DigitizationSection: React.FC = () => {
                     </div>
 
                     {/* Right - Text Content */}
-                    <div className="space-y-6 order-1 lg:order-2">
+                    <div className="space-y-6 order-1 lg:order-2 px-4 md:px-0">
                         <div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-700 mb-2">
-                                3D digitization
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-950 mb-2">
+                                A reliable <span className="underline">digitalization</span> and <span className="underline">production service</span>
                             </h2>
-                            <div className="w-24 h-0.5 bg-amber-700"></div>
                         </div>
 
-                        <div className="space-y-4 text-slate-700 text-base md:text-lg leading-relaxed">
+                        <div className="space-y-4 text-blue-950 text-base md:text-lg leading-relaxed">
                             <p>
-                                Take advantage of our various solutions and services to digitize your 3D glasses, designed for virtual experiences. You can maximize the customer experience, both online and in-store.
+                                Two dedicated teams of over <strong className="font-bold">20 highly qualified photographers and designers</strong> take care of your frame collections and create exact 2D and 3D copies of them.
                             </p>
                             <p>
-                                Depending on your needs and budget, you can get <strong className="text-amber-700 underline">high-definition renderings</strong> with our patented Studiobox 3D or use our online converter for the bulk scanning process.
+                                With an average of 4,000 frames scanned per month, the Fittingbox database is the largest 3D frame library in the world. We have over <strong className="font-bold">195,000 references</strong>.
                             </p>
                         </div>
 
                         <div className="pt-4">
-                            <button className="px-8 py-3 rounded-full border-2 border-amber-700 text-amber-700  font-semibold hover:bg-amber-50 transition-colors duration-300">
-                                Discover our digitalization services
+                            <button className="px-6 md:px-8 py-3 md:py-4 rounded-lg bg-blue-950 text-white font-semibold hover:bg-blue-900 transition-colors duration-300 text-sm md:text-base">
+                                Learn more about our digitalization process
                             </button>
                         </div>
                     </div>
