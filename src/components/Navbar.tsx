@@ -370,12 +370,12 @@ const Navbar: React.FC = () => {
                     </button>
 
                     {/* Desktop CTAs */}
-                    <button
-                        onClick={handleScrollToLiveDemo}
-                        className="hidden sm:inline-flex rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors cursor-pointer"
+                    <Link
+                        to="/login"
+                        className="hidden md:inline-flex rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors cursor-pointer"
                     >
-                        Try on glasses
-                    </button>
+                        Login
+                    </Link>
                     <button
                         onClick={handleScrollToLiveDemo}
                         className="hidden md:inline-flex rounded-full bg-blue-500 text-white px-5 py-2 text-sm font-semibold shadow-lg hover:bg-blue-600 transition-colors cursor-pointer"
@@ -549,15 +549,13 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <div className="pt-2 space-y-3">
-                        <button
-                            onClick={() => {
-                                setIsMobileOpen(false)
-                                handleScrollToLiveDemo()
-                            }}
-                            className="w-full rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors cursor-pointer"
+                        <Link
+                            to="/login"
+                            onClick={() => setIsMobileOpen(false)}
+                            className="w-full rounded-full border border-blue-400 px-5 py-2 text-sm font-semibold text-blue-100 hover:bg-blue-500/10 transition-colors cursor-pointer text-center block"
                         >
-                            Try on glasses
-                        </button>
+                            Login
+                        </Link>
                         <button
                             onClick={() => {
                                 setIsMobileOpen(false)

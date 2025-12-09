@@ -34,6 +34,8 @@ import JobApplication from './pages/whoWeAre/JobApplication'
 import Products from './pages/shop/Products'
 import Cart from './pages/shop/Cart'
 import Checkout from './pages/shop/Checkout'
+import Login from './pages/auth/Login'
+import Register from './pages/auth/Register'
 
 function App() {
   return (
@@ -73,6 +75,8 @@ function App() {
         <Route path="/shop" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   )
